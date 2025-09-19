@@ -1,0 +1,18 @@
+{
+  "menu": [
+    {
+      "name": "Dashboard",
+      "icon": "bx bx-home",
+      "slug": "dashboard"
+    },
+    {
+      "menuHeader": "Apps & Pages"
+    },
+    {
+      "name": "Users",
+      "icon": "bx bx-user",
+      "url": "/users",
+      "slug": "users"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+<img src="{{ asset('assets/img/favicon/favicon.ico') }}" alt="Logo" width="40">
