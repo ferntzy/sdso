@@ -6,6 +6,7 @@ use App\Http\Controllers\authentications\ForgotPasswordBasic;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\authentications\LoginBasic;
 use App\Http\Controllers\Auth\LoginController;
+
 // Main Page Route
 Route::get('/', [LoginBasic::class, 'index'])->name('auth-login-basic');
 
@@ -42,6 +43,28 @@ Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 Route::get('/admin/dashboard', function () {
   return view('admin.dashboard');
 })->middleware('auth')->name('admin.dashboard');
+Route::middleware(['admin'])->group(function () {
+  // Organization Accounts
+  Route::get('/admin/users/organization', function () {
+    return view('admin.users.orgs.index');
+  })->name('admin.users.organization');
+
+  // Faculty Accounts
+  Route::get('/admin/users/faculty', function () {
+    return view('admin.users.faculty.index');
+  })->name('admin.users.faculty');
+});
+// Admin Accounts
+Route::get('/admin/users/admins', function () {
+  return view('admin.users.admins.index');
+})->name('admin.users.admins');
+
+
+
+
+
+
+
 
 // Staff dashboard
 Route::get('/staff/dashboard', function () {

@@ -6,13 +6,35 @@
       "slug": "dashboard"
     },
     {
-      "menuHeader": "Apps & Pages"
+      "menuHeader": "Admin Controls"
     },
     {
       "name": "Users",
       "icon": "bx bx-user",
-      "url": "/users",
-      "slug": "users"
+      "slug": "users",
+      "submenu": [
+        {
+          "name": "Organization Accounts",
+          "url": "admin/users/organization",
+          "slug": "organization-accounts"
+        },
+        {
+          "name": "Faculty Accounts",
+          "url": "admin/users/faculty",
+          "slug": "faculty-accounts"
+        },
+        {
+          "name": "Admin Accounts",
+          "url": "admin/users/admins",
+          "slug": "student-accounts"
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "icon": "bx bx-cog",
+      "url": "admin/settings",
+      "slug": "settings"
     }
   ]
 }
