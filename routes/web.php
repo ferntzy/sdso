@@ -9,7 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 // Main Page Route
 Route::get('/', [LoginBasic::class, 'index'])->name('auth-login-basic');
-
+// Route::get('/', [RegisterBasic::class, 'index'])->name('auth-register-basic');
 //admin dashboard
 Route::middleware(['auth'])->group(function () {
   Route::get('/admin/dashboard', function () {

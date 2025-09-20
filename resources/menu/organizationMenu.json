@@ -1,0 +1,25 @@
+{
+  "menu": [
+    {
+      "name": "Dashboard",
+      "icon": "bx bx-home",
+      "url": "organization/dashboard",
+      "slug": "organization.dashboard"
+    },
+    {
+      "menuHeader": "My Events"
+    },
+    {
+      "name": "Manage Events",
+      "icon": "bx bx-calendar-event",
+      "url": "organization/events",
+      "slug": "organization.events"
+    },
+    {
+      "name": "Reports",
+      "icon": "bx bx-bar-chart",
+      "url": "organization/reports",
+      "slug": "organization.reports"
+    }
+  ]
+}

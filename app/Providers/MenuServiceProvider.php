@@ -13,24 +13,37 @@ class MenuServiceProvider extends ServiceProvider
   public function boot(): void
   {
     View::composer('*', function ($view) {
-      $verticalMenuJson = file_get_contents(base_path('resources/menu/verticalMenu.json'));
-      $verticalMenuData = json_decode($verticalMenuJson);
-
       // Default role
       $role = 'guest';
 
       if (Auth::check()) {
-        $role = Auth::user()->account_role; // now it should detect "admin"
+        $role = Auth::user()->account_role;
+      }
+      switch ($role) {
+        case 'admin':
+          $menuFile = base_path('resources/menu/adminMenu.json');
+          break;
+        case 'user':
+          $menuFile = base_path('resources/menu/organizationMenu.json');
+          break;
+        case 'faculty':
+          $menuFile = base_path('resources/menu/facultyMenu.json');
+          break;
+        default:
+          $menuFile = base_path('resources/menu/verticalMenu.json');
+          break;
       }
 
-      // Adjust dashboard link
-      foreach ($verticalMenuData->menu as &$menuItem) {
+      $menuJson = file_get_contents($menuFile);
+      $menuData = json_decode($menuJson);
+
+      foreach ($menuData->menu as &$menuItem) {
         if (isset($menuItem->slug) && $menuItem->slug === 'dashboard') {
           $menuItem->url = $role . '/dashboard';
         }
       }
 
-      $view->with('menuData', [$verticalMenuData]);
+      $view->with('menuData', [$menuData]);
     });
   }
 }
